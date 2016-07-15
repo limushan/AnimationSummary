@@ -155,4 +155,7 @@ public class MainActivity extends AppCompatActivity {
     public void OnLayoutAnimation(View view) {
         startActivity(new Intent(this, LayoutAnimationActivity.class));
     }
+    public void OnOpenObjectAnimator(View view) {
+        startActivity(new Intent(this, ValueAnimationActivity.class));
+    }
 }
