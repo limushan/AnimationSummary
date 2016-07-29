@@ -53,7 +53,11 @@ public class ValueAnimationActivity extends Activity {
         ObjectAnimator animator3 = ObjectAnimator.ofFloat(mTestIv, "translationY", -500f, 0, 500f);
         animator3.setDuration(5000);
         AnimatorSet set = new AnimatorSet();
-        set.play(animator).with(animator1).after(animator2).before(animator3);
+        ObjectAnimator animator4 = ObjectAnimator.ofFloat(mTestIv, "scaleY", 1, 10, 5, 10, 1);
+        animator4.setDuration(10000);
+        ObjectAnimator animator5 = ObjectAnimator.ofFloat(mTestIv, "scaleX", 1, 10, 5, 10, 1);
+        animator5.setDuration(10000);
+        set.play(animator).with(animator1).after(animator2).before(animator4).before(animator5);
         set.start();
         set.addListener(new Animator.AnimatorListener() {
             @Override
