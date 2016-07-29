@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "dianji", Toast.LENGTH_SHORT).show();
             }
         });
+
+        Log.e("MUUUUUUUUUUUUUUU", "" + MIUIUtils.isMIUI());
+
+
     }
 
     private Handler handler = new Handler(new Handler.Callback() {
@@ -155,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
     public void OnLayoutAnimation(View view) {
         startActivity(new Intent(this, LayoutAnimationActivity.class));
     }
+
     public void OnOpenObjectAnimator(View view) {
         startActivity(new Intent(this, ValueAnimationActivity.class));
     }

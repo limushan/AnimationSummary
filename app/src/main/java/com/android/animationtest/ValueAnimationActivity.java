@@ -8,6 +8,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,6 +24,19 @@ public class ValueAnimationActivity extends Activity {
         setContentView(R.layout.activity_value_animation);
         mTestIv = (ImageView) findViewById(R.id.test_iv);
         setValueAnimation();
+        testValueAnimator();
+    }
+
+    private void testValueAnimator() {
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 100, 10, 1000);
+        valueAnimator.setDuration(10000);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                Log.e("current value :", "" + animation.getAnimatedValue());
+            }
+        });
+        valueAnimator.start();
     }
 
     /**
@@ -32,12 +46,14 @@ public class ValueAnimationActivity extends Activity {
     public void setValueAnimation() {
         ObjectAnimator animator = ObjectAnimator.ofFloat(mTestIv, "alpha", 1f, 0f, 1f);
         animator.setDuration(1000);
-        ObjectAnimator animator1 = ObjectAnimator.ofFloat(mTestIv, "translationX", -500f, 0, 500f);
-        animator1.setDuration(5000);
+        ObjectAnimator animator1 = ObjectAnimator.ofFloat(mTestIv, "translationX", -100f, 0, 100f);
+        animator1.setDuration(1000);
         ObjectAnimator animator2 = ObjectAnimator.ofFloat(mTestIv, "rotation", 0, 360, 0);
         animator2.setDuration(2000);
+        ObjectAnimator animator3 = ObjectAnimator.ofFloat(mTestIv, "translationY", -500f, 0, 500f);
+        animator3.setDuration(5000);
         AnimatorSet set = new AnimatorSet();
-        set.play(animator).with(animator1).after(animator2);
+        set.play(animator).with(animator1).after(animator2).before(animator3);
         set.start();
         set.addListener(new Animator.AnimatorListener() {
             @Override
