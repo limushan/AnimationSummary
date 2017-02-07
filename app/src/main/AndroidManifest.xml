@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.animationtest">
+    package="com.android.animation">
 
     <application
         android:allowBackup="true"
@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".LayoutAnimationActivity" />
         <activity android:name=".ValueAnimationActivity" />
+        <activity android:name=".FrameByFrameActivity" />
+        <activity android:name=".TweenActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.android.animationtest;
+package com.android.animation;
 
 import android.os.Environment;
 import android.util.Log;

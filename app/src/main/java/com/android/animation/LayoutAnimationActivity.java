@@ -1,4 +1,4 @@
-package com.android.animationtest;
+package com.android.animation;
 
 import android.app.Activity;
 import android.os.Bundle;

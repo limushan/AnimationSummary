@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+
+    <item
+        android:drawable="@drawable/biyao_0"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_1"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_2"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_3"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_4"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_5"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_6"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_7"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_8"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_9"
+        android:duration="300"/>
+    <item
+        android:drawable="@drawable/biyao_10"
+        android:duration="30"/>
+    <item
+        android:drawable="@drawable/biyao_11"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/biyao_12"
+        android:duration="100"/>
+
+</animation-list>

@@ -1,28 +1,39 @@
-package com.android.animationtest;
+package com.android.animation;
 
 import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 /**
  * Created by lbb on 2016/7/14.
+ * Android 动画
+ * 1.逐帧动画
+ * 2.补间动画
+ * 3.属性动画
  */
 public class ValueAnimationActivity extends Activity {
     private ImageView mTestIv;
+    private MyView testScaleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_value_animation);
         mTestIv = (ImageView) findViewById(R.id.test_iv);
+
+
+        testScaleView = (MyView) findViewById(R.id.test_scale_view);
+
         setValueAnimation();
         testValueAnimator();
     }
@@ -87,6 +98,24 @@ public class ValueAnimationActivity extends Activity {
                 super.onAnimationCancel(animation);
             }
         });
+
+    }
+
+    public void onStartValue(View view) {
+        /**
+         * USEＸＭＬ
+         */
+        Animator animator = AnimatorInflater.loadAnimator(this, R.animator.value_anim_set);
+        animator.setTarget(mTestIv);
+        animator.start();
+
+        /**
+         * 自定义属性动画
+         */
+        ObjectAnimator animator1 = ObjectAnimator.ofObject(testScaleView, "scale", new ScaleEvaluator(), new Scale(1, 1), new Scale(10, 10), new Scale(1, 1));
+        animator1.setDuration(1000);
+        animator1.setInterpolator(new BounceInterpolator());
+        animator1.start();
 
     }
 }

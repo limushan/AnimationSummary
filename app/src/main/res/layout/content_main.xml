@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.android.animationtest.MainActivity"
+    tools:context="com.android.animation.MainActivity"
+    android:orientation="vertical"
     tools:showIn="@layout/activity_main">
 
     <ImageView
@@ -20,47 +21,38 @@
         android:src="@drawable/anim_list" />
 
     <Button
-        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="OnUseCode"
         android:text="补间动画USECODE" />
 
     <Button
-        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button1"
         android:layout_marginTop="24dp"
         android:onClick="OnUseXml"
         android:text="补间动画USEXML" />
 
     <Button
-        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button2"
         android:layout_marginTop="24dp"
-        android:onClick="OnUse"
+        android:onClick="gotoFrameByFrameAnimation"
         android:text="逐帧动画" />
 
     <Button
-        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button3"
         android:layout_marginTop="24dp"
         android:onClick="OnLayoutAnimation"
         android:text="LayoutAnimation" />
 
     <Button
-        android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button4"
         android:layout_marginTop="24dp"
         android:onClick="OnOpenObjectAnimator"
         android:text="OnOpenObjectAnimator" />
 
 
-</RelativeLayout>
+</LinearLayout>
