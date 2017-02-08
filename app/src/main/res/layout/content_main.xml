@@ -9,29 +9,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.android.animation.MainActivity"
+    tools:context="com.android.animation.activity.MainActivity"
     android:orientation="vertical"
     tools:showIn="@layout/activity_main">
 
-    <ImageView
-        android:id="@+id/test_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@drawable/anim_list" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="OnUseCode"
-        android:text="补间动画USECODE" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:onClick="OnUseXml"
-        android:text="补间动画USEXML" />
+        android:onClick="gotoTweenAnimation"
+        android:text="补间动画" />
 
     <Button
         android:layout_width="wrap_content"
@@ -52,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:onClick="OnOpenObjectAnimator"
-        android:text="OnOpenObjectAnimator" />
+        android:text="属性动画" />
 
 
 </LinearLayout>

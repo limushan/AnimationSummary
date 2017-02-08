@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="3000"
+    android:fillAfter="true">
+    <!-- fromXScale 动画开始X轴的缩放大小
+         fromYScale 动画开始Y轴的缩放大小
+         toXScale 动画结束X轴的缩放大小
+         toYScale 动画结束Y轴的缩放大小
+         pivotX  设置动画在X轴的相对位置
+         pivotX  设置动画在Y轴的相对位置
+         示例：1.50 表示使用绝对位置定位
+               2.50% 表示使用相对于控件自身的位置定位
+               3.50%p 表示使用相对于父控件的位置定位-->
+    <scale
+        android:fromXScale="1.0"
+        android:fromYScale="3.0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toXScale="1"
+        android:toYScale="2" />
+</set>

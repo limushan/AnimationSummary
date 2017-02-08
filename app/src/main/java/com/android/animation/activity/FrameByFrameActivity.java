@@ -1,4 +1,4 @@
-package com.android.animation;
+package com.android.animation.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.android.animation.R;
 
 /**
  * @author 李彬彬

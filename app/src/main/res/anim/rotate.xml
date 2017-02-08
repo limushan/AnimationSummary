@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="3000"
+    android:fillAfter="true">
+    <!-- fromDegrees 动画开始View的角度
+         toDegrees  动画结束View的角度
+         pivotX  设置动画在X轴的相对位置
+         pivotX  设置动画在Y轴的相对位置
+         示例：1.50 表示使用绝对位置定位
+               2.50% 表示使用相对于控件自身的位置定位
+               3.50%p 表示使用相对于父控件的位置定位
+         -->
+    <rotate
+
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:toDegrees="180" />
+</set>

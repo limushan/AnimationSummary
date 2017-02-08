@@ -1,4 +1,4 @@
-package com.android.animation;
+package com.android.animation.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -14,12 +14,14 @@ import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.animation.MyView;
+import com.android.animation.R;
+import com.android.animation.Scale;
+import com.android.animation.ScaleEvaluator;
+
 /**
- * Created by lbb on 2016/7/14.
- * Android 动画
- * 1.逐帧动画
- * 2.补间动画
- * 3.属性动画
+ *     属性动画
+ *
  */
 public class ValueAnimationActivity extends Activity {
     private ImageView mTestIv;
