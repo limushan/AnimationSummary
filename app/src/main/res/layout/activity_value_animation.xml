@@ -26,4 +26,11 @@
         android:text="开始动画(xml)"
         android:onClick="startByXml" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="TypeEvaluator"
+        android:onClick="typeEvaluator" />
+
 </LinearLayout>

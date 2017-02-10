@@ -5,22 +5,18 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.BounceInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.animation.MyView;
 import com.android.animation.R;
-import com.android.animation.Scale;
-import com.android.animation.ScaleEvaluator;
+import com.android.animation.Translate;
+import com.android.animation.WaveEvaluator;
 
 /**
  * @author lbb
@@ -86,7 +82,7 @@ import com.android.animation.ScaleEvaluator;
  *         监听动画的开始，结束，取消，以及重复
  *         7.TypeEvaluator：控制动画系统数值之间的过度
  *         例：FloatEvaluator
- *         fraction标识动画的完成度，和设置的Interpolator有关
+ *         fraction标识动画的完成度，和设置的Interpolator有关,默认是AccelerateDecelerateInterpolator，两端减速中间加速改变动画完成度
  *         public Float evaluate(float fraction, Number startValue, Number endValue) {
  *         float startFloat = startValue.floatValue();
  *         return startFloat + fraction * (endValue.floatValue() - startFloat);
@@ -197,10 +193,20 @@ public class ValueAnimationActivity extends Activity {
         /**
          * 自定义属性动画
          */
-        ObjectAnimator animator1 = ObjectAnimator.ofObject(mImageView, "scale", new ScaleEvaluator(), new Scale(1, 1), new Scale(10, 10), new Scale(1, 1));
-        animator1.setDuration(1000);
-        animator1.setInterpolator(new BounceInterpolator());
-        animator1.start();
+    }
 
+    public void typeEvaluator(View view) {
+        ObjectAnimator animator1 = ObjectAnimator.ofObject(view, "translate", new WaveEvaluator(), new Translate(0, 0), new Translate(1, 0));
+        animator1.setDuration(10000);
+        animator1.setInterpolator(new LinearInterpolator());
+        animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                Translate translate = (Translate) animation.getAnimatedValue();
+                mImageView.setTranslationX(translate.x);
+                mImageView.setTranslationY(translate.y);
+            }
+        });
+        animator1.start();
     }
 }
