@@ -21,7 +21,8 @@
         <activity android:name=".activity.LayoutAnimationActivity" />
         <activity android:name=".activity.ValueAnimationActivity" />
         <activity android:name=".activity.FrameByFrameActivity" />
-        <activity android:name=".activity.TweenActivity"></activity>
+        <activity android:name=".activity.TweenActivity" />
+        <activity android:name=".activity.PlaneRevolutionActivity"></activity>
     </application>
 
 </manifest>

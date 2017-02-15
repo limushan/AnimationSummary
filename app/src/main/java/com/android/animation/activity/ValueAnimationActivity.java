@@ -209,4 +209,8 @@ public class ValueAnimationActivity extends Activity {
         });
         animator1.start();
     }
+
+    public void planeRevolution(View view) {
+        PlaneRevolutionActivity.start(this);
+    }
 }

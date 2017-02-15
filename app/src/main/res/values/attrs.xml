@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PlaneRevolutionLayout">
+        <attr name="orientation" format="integer" />
+        <attr name="frontClickId" format="integer" />
+        <attr name="backClickId" format="integer" />
+    </declare-styleable>
+</resources>
