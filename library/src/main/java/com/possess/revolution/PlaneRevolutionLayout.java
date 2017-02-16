@@ -1,4 +1,4 @@
-package com.android.animation.view;
+package com.possess.revolution;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.android.animation.R;
+import com.android.library.R;
 
 /**
  * @author 李彬彬
@@ -32,8 +32,8 @@ public class PlaneRevolutionLayout extends FrameLayout {
     private int mFrontClickViewResId = -1;
     private int mBackClickViewResId = -1;
 
-    private Animator mFrontAnimator;
-    private Animator mBackAnimator;
+    private Animator mLeftOutAnimator;
+    private Animator mRightInAnimator;
 
 
     public PlaneRevolutionLayout(Context context) {
@@ -45,37 +45,12 @@ public class PlaneRevolutionLayout extends FrameLayout {
     }
 
     public PlaneRevolutionLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
-    }
-
-    public PlaneRevolutionLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.PlaneRevolutionLayout, defStyleAttr, defStyleRes);
+        super(context, attrs, defStyleAttr);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.PlaneRevolutionLayout, defStyleAttr, 0);
         mOrientation = ta.getInt(R.styleable.PlaneRevolutionLayout_orientation, 0);
-        mFrontClickViewResId = ta.getInt(R.styleable.PlaneRevolutionLayout_frontClickId, -1);
-        mBackClickViewResId = ta.getInt(R.styleable.PlaneRevolutionLayout_backClickId, -1);
+        mFrontClickViewResId = ta.getResourceId(R.styleable.PlaneRevolutionLayout_frontClickId, -1);
+        mBackClickViewResId = ta.getResourceId(R.styleable.PlaneRevolutionLayout_backClickId, -1);
         ta.recycle();
-
-        initAnimator();
-    }
-
-    private void initAnimator() {
-        mFrontAnimator = AnimatorInflater.loadAnimator(getContext(), R.animator.verical_revolution_front);
-        mBackAnimator = AnimatorInflater.loadAnimator(getContext(), R.animator.verical_revolution_back);
-        mFrontAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-                setClickable(false);
-            }
-        });
-
-        mBackAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                setClickable(true);
-            }
-        });
     }
 
     @Override
@@ -95,6 +70,7 @@ public class PlaneRevolutionLayout extends FrameLayout {
         } else {
             setBackClickView(mSecondView);
         }
+        setCameraDistance();
     }
 
     private void setFrontClickView(View frontClickView) {
@@ -131,27 +107,76 @@ public class PlaneRevolutionLayout extends FrameLayout {
      * start switch view
      */
     private void startRotate() {
+        if (mLeftOutAnimator == null)
+            initDefaultLeftOutAnimator();
+        if (mRightInAnimator == null)
+            initDefaultRightInAnimator();
         if (mLocation == FRONT) {
-            mFrontAnimator.setTarget(mSecondView);
-            mBackAnimator.setTarget(mFirstView);
-            mFrontAnimator.start();
-            mBackAnimator.start();
+            mLeftOutAnimator.setTarget(mSecondView);
+            mRightInAnimator.setTarget(mFirstView);
+            mLeftOutAnimator.start();
+            mRightInAnimator.start();
             mLocation = BACK;
         } else {
-            mFrontAnimator.setTarget(mFirstView);
-            mBackAnimator.setTarget(mSecondView);
-            mFrontAnimator.start();
-            mBackAnimator.start();
-            //setCameraDistance();
+            mLeftOutAnimator.setTarget(mFirstView);
+            mRightInAnimator.setTarget(mSecondView);
+            mLeftOutAnimator.start();
+            mRightInAnimator.start();
             mLocation = FRONT;
         }
-        setCameraDistance();
-
     }
 
     private void setCameraDistance() {
-        float distance = getContext().getResources().getDisplayMetrics().density * 16000;
+        float distance = getResources().getDisplayMetrics().density * 16000;
         mFirstView.setCameraDistance(distance);
         mSecondView.setCameraDistance(distance);
     }
+
+    public void setLeftOutAnimator(Animator animator) {
+        if (mLeftOutAnimator != null) {
+            mLeftOutAnimator.removeListener(animatorStartListener);
+        }
+        mLeftOutAnimator = animator;
+        if (mLeftOutAnimator != null) {
+            mLeftOutAnimator.addListener(animatorStartListener);
+        }
+    }
+
+    public void setRightInAnimator(Animator animator) {
+        if (mRightInAnimator != null) {
+            mRightInAnimator.removeListener(animatorEndListener);
+        }
+        mRightInAnimator = animator;
+        if (mRightInAnimator != null) {
+            mRightInAnimator.addListener(animatorEndListener);
+        }
+    }
+
+    private AnimatorListenerAdapter animatorStartListener = new AnimatorListenerAdapter() {
+        @Override
+        public void onAnimationStart(Animator animation) {
+            if (mFrontClickView != null) mFrontClickView.setClickable(false);
+            if (mBackClickView != null) mBackClickView.setClickable(false);
+        }
+    };
+
+    private AnimatorListenerAdapter animatorEndListener = new AnimatorListenerAdapter() {
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            if (mFrontClickView != null) mFrontClickView.setClickable(true);
+            if (mBackClickView != null) mBackClickView.setClickable(true);
+        }
+    };
+
+    private void initDefaultLeftOutAnimator() {
+        Animator leftInAnimator = AnimatorInflater.loadAnimator(getContext(), R.animator.verical_revolution_front);
+        setLeftOutAnimator(leftInAnimator);
+
+    }
+
+    private void initDefaultRightInAnimator() {
+        Animator rightInAnimator = AnimatorInflater.loadAnimator(getContext(), R.animator.verical_revolution_back);
+        setRightInAnimator(rightInAnimator);
+    }
+
 }
