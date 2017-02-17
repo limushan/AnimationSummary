@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import com.android.library.R;
 
 /**
- * @author 李彬彬
+ * @author libinbin
  *         2017/2/14
  */
 
@@ -55,6 +55,7 @@ public class PlaneRevolutionLayout extends FrameLayout {
 
     @Override
     protected void onFinishInflate() {
+        super.onFinishInflate();
         int childCount = getChildCount();
         if (childCount != 2)
             throw new IllegalStateException("this layout must have exactly 2 children!");

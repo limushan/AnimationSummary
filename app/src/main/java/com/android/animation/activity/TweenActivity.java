@@ -176,7 +176,6 @@ public class TweenActivity extends AppCompatActivity {
      * 混合动画：AnimationSet类
      * 构造器参数（是否共享Animation的Interpolator——true共享）
      *
-     * @param view
      */
     public void hybridByCode(View view) {
         AnimationSet animationSet = new AnimationSet(true);
